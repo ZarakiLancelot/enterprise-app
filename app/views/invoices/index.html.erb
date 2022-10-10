@@ -2,13 +2,24 @@
 
 <h1>Invoices</h1>
 
-<div id="invoices">
+<div class="accordion" id="invoices">
   <% @invoices.each do |invoice| %>
-    <%= render invoice %>
-    <p>
-      <%= link_to "Show this invoice", invoice %>
-    </p>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="heading<%= invoice.date.to_s(:number) %>">
+        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse<%= invoice.date.to_s(:number) %>" aria-expanded="true" aria-controls="collapse<%= invoice.date.to_s(:number) %>">
+          <%= invoice.company %>
+        </button>
+      </h2>
+      <div id="collapse<%= invoice.date.to_s(:number) %>" class="accordion-collapse collapse show" aria-labelledby="heading<%= invoice.date.to_s(:number) %>" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <%= render invoice %>
+          <p>
+            <%= link_to "Show this invoice", invoice %>
+          </p>
+        </div>
+      </div>
+    </div>
   <% end %>
 </div>
 
-<%= link_to "New invoice", new_invoice_path %>
+<%= link_to "New invoice", new_invoice_path, class: "btn btn-primary" %>
