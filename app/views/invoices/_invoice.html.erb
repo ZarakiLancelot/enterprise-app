@@ -1,7 +1,7 @@
 <div id="<%= dom_id invoice %>">
   <p>
     <strong>Date:</strong>
-    <%= invoice.date %>
+    <%= invoice.date.to_s(:long) %>
   </p>
 
   <p>
@@ -11,7 +11,7 @@
 
   <p>
     <strong>Tax:</strong>
-    <%= invoice.tax %>
+    <%= invoice.tax %> %
   </p>
 
   <p>
