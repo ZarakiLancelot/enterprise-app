@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  namespace :client do
+    get 'dashboard/index'
+  end
   devise_for :users
   get 'welcome/index'
   get 'welcome/about'
